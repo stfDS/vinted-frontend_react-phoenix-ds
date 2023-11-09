@@ -1,7 +1,9 @@
 @import "./assets/home.css";
 
 a {
-  all: initial;
+  text-decoration: none;
+  color: inherit;
+  /* all: initial; */
 }
 .container {
   max-width: 1280px;

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <header>
@@ -16,7 +17,9 @@ const Header = () => {
             <button>se connecter</button>
           </div>
           <div>
-            <button>s'incrire</button>
+            <Link to="/signup">
+              <button>s'incrire</button>
+            </Link>
           </div>
         </div>
         <div className="sell">
