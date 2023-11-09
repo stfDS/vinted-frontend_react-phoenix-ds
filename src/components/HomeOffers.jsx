@@ -1,34 +1,31 @@
-// import { Link } from "react-router-dom";
-import ConvertArrayToObject from "./ConvertArrayToObj";
+import { Link } from "react-router-dom";
 const HomeOffers = ({ data }) => {
   return data.offers.map((offer) => {
+    // console.log(offer);
     return (
-      <div key={offer._id} className="home-offer">
-        <div className="home-avatar-pic" key={offer.owner.account.username}>
-          <img src={offer.owner.account.avatar.secure_url} alt="" />
-          <span>{offer.owner.account.username}</span>
-        </div>
-        {/* {offer.product_pictures.map((picture) => {
-          return (
-            <div className="home-offer-pic" key={picture.asset_id}>
-              <img src={picture.secure_url} alt="" />
-            </div>
-          );
-        })} */}
-        <div
-          className="home-offer-pic"
-          key={offer.product_pictures[0].asset_id}
-        >
-          <img src={offer.product_pictures[0].secure_url} alt="" />
-        </div>
-
-        <div>
-          <span>{offer.product_price} €</span>
-          <ConvertArrayToObject tab={offer.product_details} />
-
-          <span>{offer.product_details.marque}</span>
-        </div>
-      </div>
+      <Link to={`/offer/${offer._id}`} key={offer._id} className="home-offer">
+        <article>
+          <div className="home-avatar-pic" key={offer.owner.account.username}>
+            {offer.owner.account.avatar && (
+              <img src={offer.owner.account.avatar.secure_url} alt="" />
+            )}
+            <span>{offer.owner.account.username}</span>
+          </div>
+          <div
+            className="home-offer-pic"
+            key={offer.product_pictures[0].asset_id}
+          >
+            {offer.product_pictures[0].secure_url && (
+              <img src={offer.product_pictures[0].secure_url} alt="" />
+            )}
+          </div>
+          <div className="home-product-price">
+            <span>{offer.product_price} €</span>
+            <span>{offer.product_details[1].TAILLE}</span>
+            <span>{offer.product_details[0].MARQUE}</span>
+          </div>
+        </article>
+      </Link>
     );
   });
 };
