@@ -11,12 +11,13 @@ const Signup = () => {
     <main>
       <Header />
       <section className="signup-form container">
+        <h2>S'inscrire</h2>
         <form
           onSubmit={(event) => {
             event.preventDefault();
             if (password.length < 8) {
               alert(
-                "Votre mot de passe est trop court ! (il faut 8 caractères minimum "
+                "Votre mot de passe est trop court ! (il faut 8 caractères minimum)"
               );
             }
             if (username === "") {
@@ -27,6 +28,7 @@ const Signup = () => {
           <div>
             <label>
               <input
+                id="username"
                 type="text"
                 placeholder="Nom d'utilisateur"
                 name="username"
@@ -40,6 +42,7 @@ const Signup = () => {
           <div>
             <label>
               <input
+                id="email"
                 type="email"
                 placeholder="Email"
                 name="email"
@@ -53,6 +56,7 @@ const Signup = () => {
           <div>
             <label>
               <input
+                id="password"
                 type="password"
                 placeholder="Mot de passe"
                 name="password"
@@ -75,10 +79,11 @@ const Signup = () => {
               value={}
           /> */}
           </div>
-
-          <input type="submit" value="S'inscrire" />
+          <div>
+            <input type="submit" value="S'inscrire" />
+          </div>
         </form>
-        {/* <Link >Tu as déjà un compte ? Connecte-toi !</Link> */}
+        <Link to="/login">Tu as déjà un compte ? Connecte-toi !</Link>
       </section>
     </main>
   );
