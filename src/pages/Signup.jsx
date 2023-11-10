@@ -19,8 +19,7 @@ const Signup = () => {
               alert(
                 "Votre mot de passe est trop court ! (il faut 8 caractères minimum)"
               );
-            }
-            if (username === "") {
+            } else if (username === "") {
               alert("Ajoutez un nom s'il vous plaît !");
             }
           }}

@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Cookies form "js-cookie";
 import Header from "../components/Header";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isAuthenticated, setisAuthenticated] = useState(false);
 
   return (
     <main>
@@ -13,17 +13,17 @@ const Login = () => {
       <section className="signup-form container">
         <h2>Se connecter</h2>
         <form
-        //   onSubmit={(event) => {
-        //     event.preventDefault();
-        //     if (password.length < 8) {
-        //       alert(
-        //         "Votre mot de passe est trop court ! (il faut 8 caractères minimum "
-        //       );
-        //     }
-        //     if (username === "") {
-        //       alert("Ajoutez un nom s'il vous plaît !");
-        //     }
-        //   }}
+          onSubmit={(event) => {
+            event.preventDefault();
+            if (password.length < 8) {
+              alert(
+                "Votre mot de passe est trop court ! (il faut 8 caractères minimum "
+              );
+            }
+            if (username === "") {
+              alert(" Écrivez votre e-mail s'il vous plaît");
+            }
+          }}
         >
           <div>
             <label>
