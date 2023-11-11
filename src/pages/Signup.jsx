@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
+import Cookies from "js-cookie";
+import axios from "axios";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -8,20 +10,18 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [newsletter, setNewsletter] = useState(false);
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (password.length < 8) {
-      alert(
-        "Votre mot de passe est trop court ! (il faut 8 caractères minimum)"
-      );
-    } else if (username === "") {
-      alert("Ajoutez un nom s'il vous plaît !");
-    }
+
     try {
       const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/login",
+        "https://lereacteur-vinted-api.herokuapp.com/user/signup",
         { username: username, email: email, password: password }
       );
+      Cookies.set("token", response.data.token, { expires: 15 });
+      navigate("/");
     } catch (error) {
       console.log(error);
     }

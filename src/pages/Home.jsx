@@ -1,8 +1,9 @@
 // import { Link } from "react-router-dom";
-import Header from "../components/Header";
-import HomeOffers from "../components/HomeOffers";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Header from "../components/Header";
+import HomeOffers from "../components/HomeOffers";
+
 import HomeHero from "../components/HomeHero";
 
 const Home = () => {

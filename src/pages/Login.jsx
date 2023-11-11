@@ -1,32 +1,29 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
+import Cookies from "js-cookie";
+import axios from "axios";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isAuthenticated, setisAuthenticated] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (password.length < 8) {
-      alert(
-        "Votre mot de passe est trop court ! (il faut 8 caractères minimum "
+    try {
+      const response = await axios.post(
+        "https://lereacteur-vinted-api.herokuapp.com/user/login",
+        {
+          email: email,
+          password: password,
+        }
       );
-    } else if (username === "") {
-      alert(" Écrivez votre e-mail s'il vous plaît");
-    } else {
-      try {
-        const response = await axios.post(
-          "https://lereacteur-vinted-api.herokuapp.com/user/login",
-          {
-            email: email,
-            password: password,
-          }
-        );
-      } catch (error) {
-        console.log(error);
-      }
+      Cookies.set("token", response.data.token);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -41,7 +38,6 @@ const Login = () => {
               id="email"
               type="email"
               placeholder="Email"
-              name="email"
               value={email}
               onChange={(event) => {
                 setEmail(event.target.value);
