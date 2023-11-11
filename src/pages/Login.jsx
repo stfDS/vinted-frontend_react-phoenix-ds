@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 
@@ -7,51 +7,58 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [isAuthenticated, setisAuthenticated] = useState(false);
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (password.length < 8) {
+      alert(
+        "Votre mot de passe est trop court ! (il faut 8 caractères minimum "
+      );
+    } else if (username === "") {
+      alert(" Écrivez votre e-mail s'il vous plaît");
+    } else {
+      try {
+        const response = await axios.post(
+          "https://lereacteur-vinted-api.herokuapp.com/user/login",
+          {
+            email: email,
+            password: password,
+          }
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
   return (
     <main>
       <Header />
       <section className="signup-form container">
         <h2>Se connecter</h2>
-        <form
-          onSubmit={(event) => {
-            event.preventDefault();
-            if (password.length < 8) {
-              alert(
-                "Votre mot de passe est trop court ! (il faut 8 caractères minimum "
-              );
-            }
-            if (username === "") {
-              alert(" Écrivez votre e-mail s'il vous plaît");
-            }
-          }}
-        >
+        <form onSubmit={handleSubmit}>
           <div>
-            <label>
-              <input
-                id="email"
-                type="email"
-                placeholder="Email"
-                name="email"
-                onChange={(event) => {
-                  setEmail(event.target.value);
-                }}
-                value={email}
-              />
-            </label>
+            <input
+              id="email"
+              type="email"
+              placeholder="Email"
+              name="email"
+              value={email}
+              onChange={(event) => {
+                setEmail(event.target.value);
+              }}
+            />
           </div>
           <div>
-            <label>
-              <input
-                id="password"
-                type="password"
-                placeholder="Mot de passe"
-                name="password"
-                onChange={(event) => {
-                  setPassword(event.target.value);
-                }}
-                value={password}
-              />
-            </label>
+            <input
+              id="password"
+              type="password"
+              placeholder="Mot de passe"
+              value={password}
+              name="password"
+              onChange={(event) => {
+                setPassword(event.target.value);
+              }}
+            />
           </div>
           <div>
             <input type="submit" value="Se connecter" />

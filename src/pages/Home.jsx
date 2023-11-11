@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import HomeOffers from "../components/HomeOffers";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import HomeHero from "../components/HomeHero";
 
 const Home = () => {
   const [data, setData] = useState();
@@ -28,22 +29,11 @@ const Home = () => {
   ) : (
     <main>
       <Header />
-      <div className="home-hero">
-        <div className="container">
-          <div className="home-in-hero">
-            <div>
-              <h1>Prêts à faire du tri dans vos placards ?</h1>
-            </div>
-            <div className="in-hero-btn">
-              <button>Commencer à vendre</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <section className="container">
-        <div className="home-offer-container">
-          <HomeOffers data={data} />
-        </div>
+      <section className="home-hero">
+        <HomeHero />
+      </section>
+      <section className="container home-offer-container">
+        <HomeOffers data={data} />
       </section>
     </main>
   );
