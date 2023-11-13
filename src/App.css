@@ -1,6 +1,6 @@
 @import "./assets/home.css";
 @import "./assets/offer-page.css";
-
+@import "./assets/header.css";
 a {
   text-decoration: none;
   color: inherit;
@@ -13,23 +13,4 @@ a {
 h1 {
   font-size: 35px;
   line-height: 40px;
-}
-header {
-  background-color: white;
-}
-.top {
-  padding: 20px 0 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.serch {
-  width: 630px;
-}
-.serch input {
-  width: 100%;
-}
-.acount {
-  display: flex;
-  gap: 15px;
 }
