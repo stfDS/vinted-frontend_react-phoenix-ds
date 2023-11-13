@@ -44,7 +44,7 @@ const Offer = () => {
               return (
                 <ul key={key}>
                   <li>
-                    <span className="span-left">{key}</span> -
+                    <span className="span-left">{key}</span>
                     <span className="span-right">{detail[key]}</span>
                   </li>
                 </ul>

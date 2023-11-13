@@ -34,6 +34,16 @@ header {
   height: 35px;
   padding: 2px 16px;
 }
+.deco-acount button {
+  background-color: #c2175b;
+  color: white;
+  font-size: 13px;
+  border-radius: 5px;
+  border: none;
+  height: 35px;
+  width: 100%;
+  padding: 2px 16px;
+}
 .sell button {
   background-color: #2baeb7;
   color: white;

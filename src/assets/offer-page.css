@@ -30,6 +30,10 @@
   color: #959797;
 }
 .offer-page-info li {
+  font-size: 14px;
+  gap: 10px;
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 10px;
 }
 .offer-page-info button {
