@@ -1,6 +1,7 @@
 import Cookies from "js-cookie";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import RefreshPage from "./Refresh";
 
 const Header = () => {
   const [token, setToken] = useState(Cookies.get("token") || null);
@@ -11,7 +12,7 @@ const Header = () => {
         <Link to="/" className="logotop">
           <img
             src="https://static.vinted.com/assets/web-logo/default/logo.svg"
-            alt="logo inted"
+            alt="logo vinted"
           />
         </Link>
         <div className="serch">
@@ -23,6 +24,7 @@ const Header = () => {
               onClick={() => {
                 Cookies.remove("token");
                 setToken(null);
+                RefreshPage();
               }}
             >
               Déconnection
@@ -40,9 +42,9 @@ const Header = () => {
           </div>
         )}
 
-        <div className="sell">
+        <Link to="/publish" className="sell">
           <button>vend tes articles</button>
-        </div>
+        </Link>
       </div>
     </header>
   );
