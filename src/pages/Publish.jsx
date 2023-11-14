@@ -2,7 +2,7 @@ import { useState } from "react";
 import Header from "../components/Header";
 import CustomInput from "../components/Custoninput";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 const Publish = () => {
@@ -18,37 +18,40 @@ const Publish = () => {
   const [exchange, setExchange] = useState(false);
   const [token, setToken] = useState(Cookies.get("token") || null);
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // try {
-    //   const formData = new FormData();
+    try {
+      const formData = new FormData();
 
-    //   formData.append("title", title);
-    //   formData.append("description", description);
-    //   formData.append("price", price);
-    //   formData.append("city", city);
-    //   formData.append("condition", condition);
-    //   formData.append("brand", brand);
-    //   formData.append("color", color);
-    //   formData.append("picture", picture);
-    //   formData.append("size", size);
-    //   formData.append("exchange", exchange);
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("price", price);
+      formData.append("city", city);
+      formData.append("condition", condition);
+      formData.append("brand", brand);
+      formData.append("color", color);
+      formData.append("picture", picture);
+      formData.append("size", size);
+      formData.append("exchange", exchange);
 
-    //   const response = await axios.post(
-    //     "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
-    //     formData,
-    //     {
-    //       headers: {
-    //         Authorization: `Bearer ${token}`,
-    //         "Content-Type": "multipart/form-data",
-    //       },
-    //     }
-    //   );
+      const response = await axios.post(
+        "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
-    //   console.log(response);
-    // } catch (error) {
-    //   console.log(error);
-    // }
+      console.log(response.data);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return token ? (

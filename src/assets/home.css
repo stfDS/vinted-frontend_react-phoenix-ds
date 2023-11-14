@@ -39,7 +39,6 @@
 .home-offer {
   display: flex;
   flex-direction: column;
-  border: solid gold;
   width: calc((100% - 50px) / 5);
 }
 .home-avatar-pic {

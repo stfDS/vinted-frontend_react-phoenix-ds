@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 const HomeOffers = ({ data }) => {
   return data.offers.map((offer) => {
-    // console.log(offer);
     return (
       <Link to={`/offer/${offer._id}`} key={offer._id} className="home-offer">
         <article>
