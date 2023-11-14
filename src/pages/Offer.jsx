@@ -1,12 +1,17 @@
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const Offer = () => {
+  const [token, setToken] = useState(Cookies.get("token") || null);
+
   const [dataOffer, setDataOffer] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [price, setPrice] = useState("");
+  const [title, setTitle] = useState("");
   const params = useParams();
   const id = params.id;
 
@@ -17,6 +22,8 @@ const Offer = () => {
           `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
         );
         setDataOffer(response.data);
+        setTitle(response.data.product_name);
+        setPrice(response.data.product_price);
         setIsLoading(false);
       } catch (error) {
         console.log(error);
@@ -51,8 +58,15 @@ const Offer = () => {
             })}
           </div>
           {/* <div><p>avatar a ajouter</p></div> */}
-
-          <button>Acheter</button>
+          {token ? (
+            <Link to="/payment" state={{ title: { title }, price: { price } }}>
+              <button>Acheter</button>
+            </Link>
+          ) : (
+            <Link to="/login">
+              <button>Acheter</button>
+            </Link>
+          )}
         </div>
       </section>
     </main>
@@ -60,5 +74,3 @@ const Offer = () => {
 };
 
 export default Offer;
-
-// ajoute un retour a home
