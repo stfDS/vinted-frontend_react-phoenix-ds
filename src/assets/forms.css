@@ -1,0 +1,29 @@
+.publish-input {
+  width: 48%;
+}
+.publish-label {
+  width: 48%;
+}
+.publish-price {
+  display: flex;
+  flex-direction: column;
+}
+.publish-price div {
+  width: 100%;
+}
+
+.publish-form {
+  display: flex;
+  width: 100%;
+  gap: 2%;
+}
+.publish-file {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 200px;
+  padding: 0 20px;
+}
+.publish-input > textarea {
+  resize: none;
+}

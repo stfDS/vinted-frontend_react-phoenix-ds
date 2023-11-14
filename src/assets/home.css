@@ -39,7 +39,7 @@
 .home-offer {
   display: flex;
   flex-direction: column;
-  /* border: solid gold; */
+  border: solid gold;
   width: calc((100% - 50px) / 5);
 }
 .home-avatar-pic {
@@ -60,16 +60,17 @@
 }
 .home-offer-pic {
   /* border: solid green; */
-  margin-bottom: 15px;
-  height: 360px;
+  height: 425px;
   width: 100%;
 }
 .home-offer-pic img {
   object-fit: cover;
+  margin-bottom: 15px;
   height: 100%;
   width: 100%;
 }
 .home-product-price {
   display: flex;
   flex-direction: column;
+  padding: 10px 0;
 }

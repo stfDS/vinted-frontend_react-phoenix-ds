@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Offer from "./pages/Offer";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import Publish from "./pages/Publish";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
 
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/publish" element={<Publish />} />
       </Routes>
     </Router>
   );
